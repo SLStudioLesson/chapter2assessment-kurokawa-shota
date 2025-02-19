@@ -37,9 +37,11 @@ public class RecipeUI {
                 switch (choice) {
                     case "1":
                         // 設問1: 一覧表示機能
+                        displayRecipes();
                         break;
                     case "2":
                         // 設問2: 新規登録機能
+                        addNewRecipe();
                         break;
                     case "3":
                         // 設問3: 検索機能
@@ -62,7 +64,17 @@ public class RecipeUI {
      * RecipeFileHandlerから読み込んだレシピデータを整形してコンソールに表示します。
      */
     private void displayRecipes() {
-
+        RecipeFileHandler recipe1 = new RecipeFileHandler();
+        ArrayList<String> array = recipe1.readRecipes();
+        if(array.isEmpty()){
+            System.out.println("No recipes available.");
+        }else {
+            System.out.println("Recipes:");
+            for (String recipe2 : array) {
+                System.out.println("----------------------------");
+                System.out.println(recipe2);
+            }
+        }
     }
 
     /**
@@ -72,7 +84,21 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void addNewRecipe() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        // ユーザーにレシピ名と材料の入力を求める
+        System.out.print("Enter recipe name: ");
+        String recipeName = reader.readLine();
+
+        System.out.print("Enter main ingredients (comma separated): ");
+        String ingredients = reader.readLine();
+
+        // addRecipeメソッドを使ってレシピを追加
+        RecipeFileHandler handler = new RecipeFileHandler();
+        handler.addRecipe(recipeName, ingredients);
+
+        // 成功と表示
+        System.out.println("Recipe added successfully.");
     }
 
     /**
