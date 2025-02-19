@@ -50,15 +50,14 @@ public class RecipeFileHandler {
      */
      // 
     public void addRecipe(String recipeName, String ingredients) {
-        // レシピファイルのパス
-        String filePath = "recipes.txt";
         String recipeLine = recipeName + "," + ingredients;
         // 読み込み
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
 
             // レシピの追加
-            writer.write(recipeLine);
             writer.newLine();
+            writer.write(recipeLine);
+
 
         } catch (IOException e) {
             System.out.println("Error reading file:" + e.getMessage());

@@ -1,7 +1,0 @@
-asdfgh,a,b,c,d,e,f,g
-asdfghjkl,asd,asd,asd,asd
-asd,a,s,da,as,asas,a,a
-
-aaa,a,aa,aaa
-a,a,a
-aa,aaa
