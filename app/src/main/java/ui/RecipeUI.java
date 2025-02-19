@@ -70,9 +70,12 @@ public class RecipeUI {
             System.out.println("No recipes available.");
         }else {
             System.out.println("Recipes:");
+            System.out.println("----------------------------");
             for (String recipe2 : array) {
-                System.out.println("----------------------------");
-                System.out.println(recipe2);
+                String[] recipe3 = recipe2.split("," , 2);
+                System.out.println("Recipe Name: " + recipe3[0]);
+                System.out.println("Main Ingredients: " + recipe3[1]);
+                System.out.println("-------------------------");
             }
         }
     }
